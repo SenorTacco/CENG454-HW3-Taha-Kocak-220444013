@@ -46,6 +46,8 @@ namespace CoreBreach
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            // ignore the core so the player can't shoot its own base
+            if (other.CompareTag("Core")) return;
             if (other.TryGetComponent<IDamageable>(out var target))
             {
                 target.TakeDamage(damage);
