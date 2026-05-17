@@ -62,3 +62,6 @@ Desktop.ini
 # Misc
 *.bak
 *.swp
+
+# Spec PDF (kept locally as reference, not part of submission)
+CENG454_HW3_CoreBreachPatterns.pdf
