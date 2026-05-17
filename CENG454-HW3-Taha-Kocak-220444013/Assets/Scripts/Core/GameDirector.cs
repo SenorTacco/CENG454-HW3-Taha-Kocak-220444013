@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CoreBreach
 {
@@ -20,6 +21,15 @@ namespace CoreBreach
         void OnDisable()
         {
             if (core != null) core.OnDestroyed -= HandleCoreLost;
+        }
+
+        void Update()
+        {
+            if (State != GameState.Playing && Input.GetKeyDown(KeyCode.R))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
         void HandleCoreLost()
