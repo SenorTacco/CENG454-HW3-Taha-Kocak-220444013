@@ -1,11 +1,14 @@
-using UnityEngine;
-
 namespace CoreBreach
 {
     public interface IWeapon
     {
+        int Damage { get; }
+        float Cooldown { get; }
+        int ProjectileCount { get; }
+        float SpreadDegrees { get; }
+
         bool CanFire { get; }
-        void Fire(Vector2 origin, Vector2 direction);
+        void NoteFired();
         void Tick(float deltaTime);
     }
 }
