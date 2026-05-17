@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CoreBreach
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : MonoBehaviour, IPoolable
     {
         [SerializeField] float speed = 14f;
         [SerializeField] float lifetime = 2.5f;
@@ -10,21 +10,38 @@ namespace CoreBreach
         Vector2 dir;
         int damage;
         float life;
+        ObjectPool<Projectile> pool;
+
+        public void Bind(ObjectPool<Projectile> owner)
+        {
+            pool = owner;
+        }
 
         public void Launch(Vector2 direction, int dmg)
         {
             dir = direction.normalized;
             damage = dmg;
-            life = lifetime;
             float a = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, a);
+        }
+
+        public void OnSpawn()
+        {
+            life = lifetime;
+        }
+
+        public void OnDespawn()
+        {
+            dir = Vector2.zero;
+            damage = 0;
+            life = 0f;
         }
 
         void Update()
         {
             transform.position += (Vector3)(dir * speed * Time.deltaTime);
             life -= Time.deltaTime;
-            if (life <= 0f) Destroy(gameObject);
+            if (life <= 0f) ReturnToPool();
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -32,8 +49,14 @@ namespace CoreBreach
             if (other.TryGetComponent<IDamageable>(out var target))
             {
                 target.TakeDamage(damage);
-                Destroy(gameObject);
+                ReturnToPool();
             }
+        }
+
+        void ReturnToPool()
+        {
+            if (pool != null) pool.Release(this);
+            else gameObject.SetActive(false);
         }
     }
 }
