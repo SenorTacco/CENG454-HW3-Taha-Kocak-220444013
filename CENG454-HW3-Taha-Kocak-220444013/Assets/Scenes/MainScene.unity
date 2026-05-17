@@ -372,6 +372,8 @@ GameObject:
   - component: {fileID: 299556920}
   - component: {fileID: 299556919}
   - component: {fileID: 299556918}
+  - component: {fileID: 299556924}
+  - component: {fileID: 299556923}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -537,6 +539,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299556923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299556917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab839632e5123f43b2243cff38013f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 7db9b04a46d2cdb45a2fcf1d00c0a3af, type: 2}
+  - {fileID: 11400000, guid: f53a6ff8aacf4d44fa46baea31a9f34d, type: 2}
+  - {fileID: 11400000, guid: 09df8e3790a461b44869dd17652fc3d8, type: 2}
+  poolService: {fileID: 1729718862}
+  director: {fileID: 299556921}
+  registry: {fileID: 299556924}
+  coreTransform: {fileID: 1607210910}
+  spawnRadius: 8
+  startDelay: 1.5
+  gapBetweenWaves: 2.5
+--- !u!114 &299556924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299556917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9ecf1459dc35740b39806d73dfa622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453793987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1055,7 @@ GameObject:
   - component: {fileID: 1607210907}
   m_Layer: 0
   m_Name: Core
-  m_TagString: Untagged
+  m_TagString: Core
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1172,7 +1209,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7330434758690683646, guid: 5edd992efb9ffe6438d4b83f6d8aef1a, type: 3}
+  enemyPrefab: {fileID: 4453918297022048931, guid: 343b9b0a2ccee5f4ba7efe707a0350a5, type: 3}
   projectilePrewarm: 16
+  enemyPrewarm: 8
 --- !u!4 &1729718863
 Transform:
   m_ObjectHideFlags: 0
