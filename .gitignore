@@ -1,0 +1,64 @@
+# ---- Unity generated ----
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Asset meta files MUST be committed (do not ignore)
+!**/Assets/**/*.meta
+
+# IDE / tooling
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.DotSettings.user
+
+# Jetbrains Rider plugin (autogen)
+**/Assets/Plugins/Editor/JetBrains*
+
+# Crash / sysinfo
+sysinfo.txt
+crashlytics-build.properties
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Addressables bins
+**/Assets/AddressableAssetsData/*/*.bin*
+
+# Streaming assets autogen
+**/Assets/StreamingAssets/aa.meta
+**/Assets/StreamingAssets/aa/*
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Misc
+*.bak
+*.swp
