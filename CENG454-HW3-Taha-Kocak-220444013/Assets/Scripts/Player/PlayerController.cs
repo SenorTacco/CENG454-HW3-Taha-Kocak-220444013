@@ -8,8 +8,8 @@ namespace CoreBreach
         [SerializeField] float moveSpeed = 6f;
         [SerializeField] float fireCooldown = 0.22f;
         [SerializeField] int projectileDamage = 1;
-        [SerializeField] Projectile projectilePrefab;
         [SerializeField] Transform muzzle;
+        [SerializeField] PoolService poolService;
 
         Rigidbody2D rb;
         Camera cam;
@@ -55,11 +55,10 @@ namespace CoreBreach
         {
             if (!Input.GetMouseButton(0)) return;
             if (fireTimer > 0f) return;
-            if (projectilePrefab == null) return;
+            if (poolService == null) return;
 
             Vector2 spawn = muzzle != null ? (Vector2)muzzle.position : (Vector2)transform.position;
-            var p = Instantiate(projectilePrefab, spawn, Quaternion.identity);
-            p.Launch(aimDir, projectileDamage);
+            poolService.SpawnProjectile(spawn, aimDir, projectileDamage);
             fireTimer = fireCooldown;
         }
     }
